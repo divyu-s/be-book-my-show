@@ -10,6 +10,7 @@ import cityRoutes from "./routes/city.js";
 import theaterRoutes from "./routes/theater.js";
 import dateRoutes from "./routes/date.js";
 import movieRoutes from "./routes/movie.js";
+import showtimeRoutes from "./routes/showtime.js";
 
 const PORT = 3000 | process.env.PORT;
 const app = express();
@@ -21,6 +22,7 @@ app.use(cityRoutes);
 app.use(theaterRoutes);
 app.use(dateRoutes);
 app.use(movieRoutes);
+app.use(showtimeRoutes);
 
 app.listen(process.env.PORT | PORT, (err) => {
   if (!err) {

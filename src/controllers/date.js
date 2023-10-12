@@ -9,7 +9,7 @@ export const getDates = async (req, res) => {
     const date = new Date();
     date.setDate(date.getDate() + i);
     dates.push(
-      date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()
+      date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear()
     );
   }
 
