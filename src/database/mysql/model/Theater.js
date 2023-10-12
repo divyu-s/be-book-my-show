@@ -1,6 +1,6 @@
 export default (sequelize, dataTypes) => {
   return sequelize.define(
-    "City",
+    "Theater",
     {
       id: {
         type: dataTypes.BIGINT,
@@ -12,9 +12,13 @@ export default (sequelize, dataTypes) => {
         allowNull: false,
         unique: true,
       },
+      cityId: {
+        type: dataTypes.BIGINT,
+        allowNull: false,
+      },
     },
     {
-      tableName: "city",
+      tableName: "theater",
       underscored: true,
     }
   );

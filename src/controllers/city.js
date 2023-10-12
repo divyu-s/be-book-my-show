@@ -1,4 +1,5 @@
 import { City } from "../database/mysql/index.js";
+import { Theater } from "../database/mysql/index.js";
 
 /**
  * return all the cities to client
@@ -6,7 +7,7 @@ import { City } from "../database/mysql/index.js";
  * @param {*} res
  */
 export const getCities = async (req, res) => {
-  const cities = await City.findAll({ attributes: ["cityId", "cityName"] });
+  const cities = await City.findAll({ attributes: ["id", "name"] });
 
   res.status(200).json(cities);
 };
@@ -19,13 +20,38 @@ export const getCities = async (req, res) => {
 export const addCity = async (req, res) => {
   try {
     const city = await City.create({
-      cityName: req.body.cityName ? req.body.cityName : null,
+      name: req.body.name ? req.body.name : null,
     });
     res.status(200).json(city);
   } catch (error) {
-    const customError = error.errors.map((error) =>
-      error.message.replace("city_name", "cityName")
-    );
+    const customError = error.errors.map((error) => error.message);
     res.status(400).send(customError);
   }
+};
+
+/**
+ * fetch all theaters of particular city
+ * @param {*} req
+ * @param {*} res
+ */
+export const getTheatersOfCity = async (req, res) => {
+  const cityId = req.params.cityId;
+  City.findByPk(cityId, {
+    attributes: ["id", "name"],
+    include: {
+      model: Theater,
+      as: "theaters",
+      attributes: ["id", "name"],
+    },
+  })
+    .then((city) => {
+      if (city) {
+        res.status(200).json(city);
+      } else {
+        res.status(404).send("City not found");
+      }
+    })
+    .catch((error) => {
+      res.status(400).send(error);
+    });
 };

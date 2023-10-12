@@ -1,6 +1,6 @@
 export default (sequelize, dataTypes) => {
   return sequelize.define(
-    "City",
+    "Movie",
     {
       id: {
         type: dataTypes.BIGINT,
@@ -14,7 +14,7 @@ export default (sequelize, dataTypes) => {
       },
     },
     {
-      tableName: "city",
+      tableName: "movie",
       underscored: true,
     }
   );
