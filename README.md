@@ -126,5 +126,3 @@ The API provides the following endpoints:
 ## Database Configuration
 
 The API uses MySQL as the database. To set up the database, ensure you have a running MySQL server and update the database connection details in the `src/config.js` file.
-
-The required database tables and associations will be automatically created and synced when the API starts.
