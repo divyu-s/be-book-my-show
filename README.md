@@ -39,7 +39,7 @@ To run the API, you'll need the following installed on your system:
 npm install
 ```
 
-4. Set up the MySQL and Redis configuration:
+4. Set up the MySQL configuration:
 
    - Open the `config.js` file in the `src` directory and update the database connection details (`your_database_name`, `your_mysql_username`, and `your_mysql_password`)
 
